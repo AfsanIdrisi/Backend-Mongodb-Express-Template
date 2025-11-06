@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 import { env } from "../utils/env.js";
 async function connectDB(){
     try {
-        let connectionStatus=await mongoose.connect(env.MONGOURI)
+        let connectionStatus=await mongoose.connect(env.MONGOURI,{
+            dbName:env.dbName
+        })
         if(connectionStatus){
             console.log("connected with db");
         } 
